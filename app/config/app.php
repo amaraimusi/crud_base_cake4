@@ -279,6 +279,33 @@ return [
      *   other RDBMS.
      */
     'Datasources' => [
+
+        'default' => [
+            'className' => 'Cake\Database\Connection', 
+            'driver' => 'Cake\Database\Driver\Mysql',
+            'host' => 'localhost',
+            /*
+             * CakePHP will use the default DB port based on the driver selected
+             * MySQL on MAMP uses port 8889, MAMP users will want to uncomment
+             * the following line and set the port accordingly
+             */
+            //'port' => 'non_standard_port_number',
+            
+            'username' => 'root',
+            'password' => '',
+            'database' => 'crud_base_cake4',
+            /**
+             * If not using the default 'public' schema with the PostgreSQL driver
+             * set it here.
+             */
+            //'schema' => 'myapp',
+            
+            /**
+             * You can use a DSN string to set the entire configuration
+             */
+            'url' => env('DATABASE_URL', null),
+        ],
+        
         /*
          * These configurations should contain permanent settings used
          * by all environments.
@@ -289,45 +316,50 @@ return [
          * Environment variable based configurations can be loaded here or
          * in app_local.php depending on the applications needs.
          */
-        'default' => [
-            'className' => Connection::class,
-            'driver' => Mysql::class,
-            'persistent' => false,
-            'timezone' => 'UTC',
+//         'default' => [
+//             'host' => 'localhost',
+//             'username' => 'root',
+//             'password' => '',
+//             'database' => 'crud_base_cake4',
+            
+//             'className' => Connection::class,
+//             'driver' => Mysql::class,
+//             'persistent' => false,
+//             'timezone' => 'UTC',
 
-            /*
-             * For MariaDB/MySQL the internal default changed from utf8 to utf8mb4, aka full utf-8 support, in CakePHP 3.6
-             */
-            //'encoding' => 'utf8mb4',
+//             /*
+//              * For MariaDB/MySQL the internal default changed from utf8 to utf8mb4, aka full utf-8 support, in CakePHP 3.6
+//              */
+//             //'encoding' => 'utf8mb4',
 
-            /*
-             * If your MySQL server is configured with `skip-character-set-client-handshake`
-             * then you MUST use the `flags` config to set your charset encoding.
-             * For e.g. `'flags' => [\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4']`
-             */
-            'flags' => [],
-            'cacheMetadata' => true,
-            'log' => false,
+//             /*
+//              * If your MySQL server is configured with `skip-character-set-client-handshake`
+//              * then you MUST use the `flags` config to set your charset encoding.
+//              * For e.g. `'flags' => [\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4']`
+//              */
+//             'flags' => [],
+//             'cacheMetadata' => true,
+//             'log' => false,
 
-            /*
-             * Set identifier quoting to true if you are using reserved words or
-             * special characters in your table or column names. Enabling this
-             * setting will result in queries built using the Query Builder having
-             * identifiers quoted when creating SQL. It should be noted that this
-             * decreases performance because each query needs to be traversed and
-             * manipulated before being executed.
-             */
-            'quoteIdentifiers' => false,
+//             /*
+//              * Set identifier quoting to true if you are using reserved words or
+//              * special characters in your table or column names. Enabling this
+//              * setting will result in queries built using the Query Builder having
+//              * identifiers quoted when creating SQL. It should be noted that this
+//              * decreases performance because each query needs to be traversed and
+//              * manipulated before being executed.
+//              */
+//             'quoteIdentifiers' => false,
 
-            /*
-             * During development, if using MySQL < 5.6, uncommenting the
-             * following line could boost the speed at which schema metadata is
-             * fetched from the database. It can also be set directly with the
-             * mysql configuration directive 'innodb_stats_on_metadata = 0'
-             * which is the recommended value in production environments
-             */
-            //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
-        ],
+//             /*
+//              * During development, if using MySQL < 5.6, uncommenting the
+//              * following line could boost the speed at which schema metadata is
+//              * fetched from the database. It can also be set directly with the
+//              * mysql configuration directive 'innodb_stats_on_metadata = 0'
+//              * which is the recommended value in production environments
+//              */
+//             //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
+//         ],
 
         /*
          * The test connection is used during the test suite.
@@ -419,3 +451,4 @@ return [
         'defaults' => 'php',
     ],
 ];
+

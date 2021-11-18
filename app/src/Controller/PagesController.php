@@ -21,6 +21,7 @@ use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\Http\Response;
 use Cake\View\Exception\MissingTemplateException;
+use Cake\Datasource\ConnectionManager;
 
 /**
  * Static content controller
@@ -45,6 +46,7 @@ class PagesController extends AppController
      */
     public function display(string ...$path): ?Response
     {
+        
         if (!$path) {
             return $this->redirect('/');
         }
@@ -59,8 +61,14 @@ class PagesController extends AppController
         if (!empty($path[1])) {
             $subpage = $path[1];
         }
+        
+        //debug('DB接続テスト');//■■■□□□■■■□□□)
+        $connection = ConnectionManager::get('default');
+        $results = $connection->execute('SELECT * FROM nekos')->fetchAll('assoc');
+        debug($results);//■■■□□□■■■□□□)
+        
         $this->set(compact('page', 'subpage'));
-
+        
         try {
             return $this->render(implode('/', $path));
         } catch (MissingTemplateException $exception) {
