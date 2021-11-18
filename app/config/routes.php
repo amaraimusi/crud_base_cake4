@@ -56,6 +56,7 @@ return static function (RouteBuilder $routes) {
          * ...and connect the rest of 'Pages' controller's URLs.
          */
         $builder->connect('/pages/*', 'Pages::display');
+        $builder->connect('/neko/', ['controller' => 'NekoEx', 'action' => 'index', 'index']);
 
         /*
          * Connect catchall routes for all controllers.
