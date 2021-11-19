@@ -4,6 +4,7 @@
  * @var \App\Model\Entity\Neko[]|\Cake\Collection\CollectionInterface $nekos
  */
 ?>
+<div>Nekosのページ</div>
 <div class="nekos index content">
     <?= $this->Html->link(__('New Neko'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Nekos') ?></h3>

@@ -62,10 +62,18 @@ class PagesController extends AppController
             $subpage = $path[1];
         }
         
-        //debug('DB接続テスト');//■■■□□□■■■□□□)
-        $connection = ConnectionManager::get('default');
-        $results = $connection->execute('SELECT * FROM nekos')->fetchAll('assoc');
-        debug($results);//■■■□□□■■■□□□)
+//         //debug('DB接続テスト');//■■■□□□■■■□□□)
+//         $connection = ConnectionManager::get('default');
+//         $results = $connection->execute('SELECT * FROM nekos')->fetchAll('assoc');
+//         debug($results);//■■■□□□■■■□□□)
+
+        $this->getRequest()->getSession()->write('animal_name', '猫');
+        
+        var_dump($this->getRequest()->getSession()->check('plant_name'));//■■■□□□■■■□□□)
+        var_dump($this->getRequest()->getSession()->check('animal_name'));//■■■□□□■■■□□□)
+        //$this->getRequest()->getSession()->delete('animal_name');
+         $animal_name = $this->getRequest()->getSession()->read('animal_name');
+         var_dump('$animal_name＝' . $animal_name);//■■■□□□■■■□□□)
         
         $this->set(compact('page', 'subpage'));
         

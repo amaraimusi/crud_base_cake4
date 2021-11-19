@@ -18,6 +18,12 @@ class NekosController extends AppController
      */
     public function index()
     {
+        $ent = ['id'=>2, 'neko_name'=>'ポメラニアン'];
+        $ent = $this->Nekos->newEntity($ent);
+        debug($ent);//■■■□□□■■■□□□)
+        $this->Nekos->save($ent);
+        
+
         $this->paginate = [
             'contain' => ['EnSps'],
         ];
